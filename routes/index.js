@@ -8,10 +8,10 @@ module.exports = function (app) {
   app.use('/posts', require('./posts'))
   app.use('/comments', require('./comments'))
 
-  // 404
-  app.use((req, res) => {
+  // 404 page
+  app.use(function (req, res) {
     if (!res.headersSent) {
-      res.status(404).render('404'); // 呈现404 错误页面
+      res.status(404).render('404')
     }
   })
 }

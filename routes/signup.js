@@ -25,27 +25,21 @@ router.post('/', checkNotLogin, function (req, res, next) {
   try {
     if (!(name.length >= 1 && name.length <= 10)) {
       throw new Error('名字请限制在 1-10 个字符')
-      return;
     }
     if (['m', 'f', 'x'].indexOf(gender) === -1) {
       throw new Error('性别只能是 m、f 或 x')
-      return;
     }
     if (!(bio.length >= 1 && bio.length <= 30)) {
       throw new Error('个人简介请限制在 1-30 个字符')
-      return;
     }
     if (!req.files.avatar.name) {
       throw new Error('缺少头像')
-      return;
     }
     if (password.length < 6) {
       throw new Error('密码至少 6 个字符')
-      return;
     }
     if (password !== repassword) {
       throw new Error('两次输入密码不一致')
-      return;
     }
   } catch (e) {
     // 注册失败，异步删除上传的头像
@@ -53,7 +47,6 @@ router.post('/', checkNotLogin, function (req, res, next) {
     req.flash('error', e.message)
     return res.redirect('/signup')
   }
-
 
   // 明文密码加密
   password = sha1(password)

@@ -4,10 +4,10 @@
   "description": "my first blog",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test",
+    "test": "istanbul cover _mocha",
     "start": "NODE_ENV=production pm2 start index.js --name 'myblog'"
   },
-  "author": "执念",
+  "author": "nswbmw",
   "license": "MIT",
   "dependencies": {
     "config-lite": "2.1.0",
